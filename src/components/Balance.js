@@ -1,19 +1,18 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { GlobalContext } from '../Context/GlobalState';
 
 const Balance = () => {
-    const {transactions} = useContext(GlobalContext);
-    const amount = transactions.map((transaction)=>{
-          return  transaction.amount
+    const { transactions } = useContext(GlobalContext);
+    let balance;
+    let income;
+    let expense;
+    const amount = transactions.map((transaction) => {
+        return transaction.amount
     })
-    const income = amount.filter(amount=>amount>0).reduce((sum,val)=> sum+val);
-    const expense = amount.filter(amount=> amount<0).reduce((sum,val)=> sum+val);
-    console.log('AMMMM : ',amount);
-    console.log('income : ',income);
-    console.log('expense : ',expense);
-    console.log('Balance : ');
-    const balance = Math.abs(income) - Math.abs(expense);
-    
+    income = amount.filter(amount => amount > 0).reduce((sum, val) => sum + val);
+    expense = amount.filter(amount => amount < 0).reduce((sum, val) => sum + val);
+
+    balance = Math.abs(income) - Math.abs(expense);
     return (
         <div>
             <h4>Your Balance</h4>

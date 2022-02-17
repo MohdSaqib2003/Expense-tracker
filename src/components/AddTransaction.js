@@ -17,7 +17,6 @@ const Addtransaction = () => {
         }
         addTransaction(formData);
         setText('');
-        setAmount();
     }
 
     return (
@@ -34,7 +33,7 @@ const Addtransaction = () => {
                     Amount <br />
                     (nagative - expense, positive - income)
                 </label>
-                <input type="number" placeholder='Enter amount...' onChange={e=>setAmount(e.target.value)} value={amount}/>
+                <input type="number" placeholder='Enter amount...' onChange={e=>setAmount(e.target.value)} />
             </div>
             <button className="btn"> Add transaction </button>
         </form>                      
