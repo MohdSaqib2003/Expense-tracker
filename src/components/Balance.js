@@ -9,8 +9,8 @@ const Balance = () => {
     const amount = transactions.map((transaction) => {
         return transaction.amount
     })
-    income = amount.filter(amount => amount > 0).reduce((sum, val) => sum + val);
-    expense = amount.filter(amount => amount < 0).reduce((sum, val) => sum + val);
+    income = amount.filter(amount => amount > 0).reduce((sum, val) => sum + val,0);
+    expense = amount.filter(amount => amount < 0).reduce((sum, val) => sum + val,0);
 
     balance = Math.abs(income) - Math.abs(expense);
     return (
