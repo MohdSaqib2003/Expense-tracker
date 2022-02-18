@@ -1,15 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Transaction from './Transaction';
 
-const Transactionlist = () => {
+const Transactionlist = (props) => {
+  console.log('PPPPPPPP : ', props.transactions)
     return (
         <>
           <h3> History </h3>  
           <ul className='list'>
-              <li className='minus'>
-                Cash <span>-$400</span> <button className='delete-btn'>x</button>
-              </li>
+             {props.transactions.map(val=>{
+               console.log(val);
+              return <Transaction key={val.id} transaction={val}/>
+             })}
           </ul>
         </>
     );
 }
-export default Transactionlist;
+const mapStateToProps = state =>{
+  return {
+    transactions : state.transactions
+  }
+}
+export default connect(mapStateToProps)(Transactionlist);
